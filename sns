@@ -1,0 +1,29 @@
+import pandas
+import numpy
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+data = pd.read_excel('/content/drive/MyDrive/MyLecture/2024/데이터시각화/제3주데이터시각화/5장/05_data1.xlsx')
+data.head()
+
+data.info()
+
+#['gender','height','weight', 'waist','drinking','smoking']열만 추출하여 data6에 저장
+data6=data,loc[:,['gender','height','weight', 'waist','drinking','smoking']]
+data6.head()
+
+#'gender'값이 1이면 'M', 2이면 'F' 입력
+data6.loc[data6['gender'=1],['gender']]='M'
+data6.loc[data6['gender'=2],['gender']]='F'
+
+#'drinking'값이 0이면 'Non-drinking', 1이면 'Dringking'입력
+data6.loc[data6['drinking'=0],['drinking']]='Non-drinking'
+data6.loc[data6['drinking'=1],['drinking']]='Drinking'
+
+#'smoking'값이 1이면 'Non-smoking', 2이면 'Quit-smoking', 3이면 'Smoking' 입력
+data6.loc[data6['smoking']==1,['smoking']]='Non-smoking'
+data6.loc[data6['smoking']==2,['smoking']]='Quit-smoking'
+data6.loc[data6['smoking']==3,['smoking']]='Smoking'
